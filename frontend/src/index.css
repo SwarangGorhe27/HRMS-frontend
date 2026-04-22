@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --sidebar-width: 0px;
+    --panel-width: 60vw;
+    --dock-height: 80px;
+    --topbar-height: 52px;
+    color-scheme: light;
+  }
+
+  .dark {
+    color-scheme: dark;
+    --panel-bg: rgba(18, 18, 23, 0.92);
+    --surface-0: #0F1117;
+    --surface-50: #13151C;
+    --surface-100: #1A1D27;
+    --surface-200: #22263A;
+    --surface-300: #2D3248;
+    --border-color: rgba(255,255,255,0.07);
+    --text-primary: #F4F5F7;
+    --text-secondary: rgba(244,245,247,0.6);
+    --text-tertiary: rgba(244,245,247,0.35);
+  }
+
+  html {
+    font-size: 13px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background: var(--surface-50, #F8F9FA);
+    color: var(--text-primary, #212529);
+    font-family: Inter, system-ui, sans-serif;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+
+  * {
+    border-color: var(--border-color, rgba(0,0,0,0.08));
+  }
+
+  input,
+  textarea,
+  select,
+  button {
+    font: inherit;
+  }
+
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.12);
+    border-radius: 10px;
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.1);
+  }
+
+  ::selection {
+    background: rgba(99,102,241,0.18);
+  }
+}
+
+@layer components {
+  .glass {
+    background: rgba(255,255,255,0.72);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 0.5px solid rgba(255,255,255,0.4);
+  }
+
+  .dark .glass {
+    background: rgba(15,17,23,0.8);
+    border-color: rgba(255,255,255,0.08);
+  }
+
+  .surface-card {
+    @apply rounded-xl border border-surface-300/60 bg-surface-0 shadow-xs;
+  }
+
+  .dark .surface-card {
+    background: var(--surface-100);
+    border-color: var(--border-color);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-1.5 rounded-lg bg-brand-500 px-3 py-1.5 text-sm font-medium text-white transition-all duration-150 hover:bg-brand-600 active:scale-[0.98] active:bg-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400/50;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-1.5 rounded-lg border border-surface-300 bg-surface-100 px-3 py-1.5 text-sm font-medium text-surface-700 transition-all duration-150 hover:bg-surface-200 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400/50;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-sm text-surface-600 transition-all duration-100 hover:bg-surface-100 hover:text-surface-800 active:scale-[0.98] focus-visible:outline-none;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center gap-1.5 rounded-lg border border-danger-500/20 bg-danger-50 px-3 py-1.5 text-sm font-medium text-danger-700 transition-all duration-150 hover:border-transparent hover:bg-danger-500 hover:text-white active:scale-[0.98];
+  }
+
+  .input-base {
+    @apply w-full rounded-lg border border-surface-300 bg-surface-0 px-3 py-2 text-base text-surface-800 placeholder:text-surface-500 transition-all duration-150 hover:border-surface-400 focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-400/15 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 text-xs font-medium;
+  }
+
+  .badge-success {
+    @apply badge bg-success-50 text-success-700;
+  }
+
+  .badge-warning {
+    @apply badge bg-warning-50 text-warning-700;
+  }
+
+  .badge-danger {
+    @apply badge bg-danger-50 text-danger-700;
+  }
+
+  .badge-info {
+    @apply badge bg-info-50 text-info-700;
+  }
+
+  .badge-neutral {
+    @apply badge bg-surface-100 text-surface-600;
+  }
+
+  .badge-brand {
+    @apply badge bg-brand-50 text-brand-700;
+  }
+}
